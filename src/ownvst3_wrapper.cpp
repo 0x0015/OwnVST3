@@ -258,7 +258,7 @@ void VST3Plugin_FreeStateData(uint8_t* data) {
     Vst3Plugin::freeStateData(data);
 }
 
-#ifdef _WIN32
+#if defined(_WIN32) && !(defined(__MINGW32__) || defined(__MINGW64__))
 // Windows-only SEH-safe DispatchMessage wrapper.
 // C# P/Invoke cannot catch corrupted-state exceptions (0xC0000005 / AccessViolation)
 // that originate inside native WndProcs called by DispatchMessage.  The .NET runtime

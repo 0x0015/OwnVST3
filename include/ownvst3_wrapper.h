@@ -137,7 +137,7 @@ OWN_VST3_WRAPPER_API bool VST3Plugin_SetState(VST3PluginHandle handle, const uin
 // Frees a buffer previously returned by VST3Plugin_GetState().
 OWN_VST3_WRAPPER_API void VST3Plugin_FreeStateData(uint8_t* data);
 
-#ifdef _WIN32
+#if defined(_WIN32) && !(defined(__MINGW32__) || defined(__MINGW64__))
 // Windows-only: wraps Win32 DispatchMessage() with SEH (__try/__except) so that
 // access violations (0xC0000005) raised inside a plugin's WndProc (e.g. JUCE-based
 // plugins such as TDR Nova) do not propagate through the P/Invoke boundary and
